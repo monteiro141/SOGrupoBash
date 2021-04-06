@@ -4,6 +4,11 @@ if [ $? -eq 1 ];then
   touch "$dbFileLocation/database.db"
 fi
 
+ls $dbFileLocation
+if [ $? -eq 2 ];then
+  mkdir $dbFileLocation
+fi
+
 exists=false
 while read lineDB
 do
