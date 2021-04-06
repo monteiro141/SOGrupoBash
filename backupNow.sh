@@ -4,9 +4,14 @@ if [ $? -eq 1 ];then
   touch "$dbFileLocation/backup.db"
 fi
 
-ls $backupDir 2> /dev/null
+ls $backupDir &> /dev/null
 if [ $? -eq 2 ];then
   mkdir $backupDir
+fi
+
+ls $dbFileLocation &> /dev/null
+if [ $? -eq 2 ];then
+  mkdir $dbFileLocation
 fi
 
 while read lineDB
@@ -27,7 +32,8 @@ do
     if [ $? -eq 0 ];then
       rm "$backupDir$fileName.tar.bz2"
     fi
-    if [ $(echo $lineDB | cut -d " " -f 2) = "directory" ];then
+    fType=$(file $lineDB)
+    if [ $(echo $fType | cut -d " " -f 2) = "directory" ];then
       fileType="Directory"
     else
       fileType="RegularFile"

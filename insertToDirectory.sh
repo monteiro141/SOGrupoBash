@@ -5,7 +5,6 @@ if [ $? -eq 1 ];then
 fi
 
 ls $dbFileLocation &> /dev/null
-
 if [ $? -eq 2 ];then
   mkdir $dbFileLocation
 fi
@@ -13,7 +12,7 @@ fi
 exists=false
 while read lineDB
 do
-  if [ "$lineDB" = $1 ];then
+  if [ $lineDB = $1 ];then
     exists=true
     break
   fi
