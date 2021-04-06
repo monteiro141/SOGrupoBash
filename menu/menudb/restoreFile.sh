@@ -20,7 +20,7 @@ then
         case $? in 
             0) . ./menu/menudb/restore.sh "$(sed "${choices}q;d" tmp)" h
             break;;
-            1) echo "1"; break;;
+            1) break;;
         esac
     done
 else

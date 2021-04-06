@@ -14,10 +14,10 @@ do
   case $opt in 
   0) 
     case $choice in
-    1) echo "1 selecionado";break;;
-    2) echo "2 selecionado";break;;
-    3) echo "3 selecionado";break;;
-    4) echo "4 selecionado";break;;
+    1) ;;
+    2) ;;
+    3) ;;
+    4) ;;
     0) break;;
     esac
   ;;

@@ -14,7 +14,7 @@ do
     case $choice in
     1) . ./menu/menudb/restoreFile.sh;;
     2) . ./menu/menudb/restoreFileNotRealLocation.sh;;
-    3) echo "2 selecionado";break;;
+    3) break;;
     esac
   ;;
   1) break;;

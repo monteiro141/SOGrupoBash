@@ -14,8 +14,8 @@ do
     opt=$?
     week=$(cat $tempfile)
     case $opt in 
-        0) echo "Ok selecionado";;
-        1) echo "Cancel selecionado"; break;;
+        0) ;;
+        1) break;;
     esac
     dialog  --title 'Seleção mês' --inputbox 'Insira em que mês pretende que faça o backup (1 a 12); (* Todos os meses)' 0 0 2> opcoes.txt
     monthChoice=$(cat opcoes.txt)

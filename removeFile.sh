@@ -18,7 +18,7 @@ then
         case $? in 
             0) . ./removeFromDirectory.sh "$(sed "${choices}q;d" databases/database.db)"
             break;;
-            1) echo "1"; break;;
+            1) break;;
         esac
     done
 else
