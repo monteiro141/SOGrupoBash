@@ -4,7 +4,7 @@ if [ $? -eq 1 ];then
   touch "$dbFileLocation/backup.db"
 fi
 
-ls $backupDir
+ls $backupDir 2> /dev/null
 if [ $? -eq 2 ];then
   mkdir $backupDir
 fi

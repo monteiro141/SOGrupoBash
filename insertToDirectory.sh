@@ -4,7 +4,7 @@ if [ $? -eq 1 ];then
   touch "$dbFileLocation/database.db"
 fi
 
-ls $dbFileLocation
+ls $dbFileLocation 2> /dev/null
 if [ $? -eq 2 ];then
   mkdir $dbFileLocation
 fi
