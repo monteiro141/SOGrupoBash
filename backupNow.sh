@@ -17,7 +17,17 @@ fi
 while read lineDB
 do
   fileName=$(echo $lineDB | rev | cut -d "/" -f 1 | rev)
-  filemd5Sum=$(md5sum $lineDB)
+  fType=$(file $lineDB)
+  if [ $(echo $fType | cut -d " " -f 2) = "directory" ];then
+    fileType="Directory"
+  else
+    fileType="RegularFile"
+  fi
+  if [ $fileType = "RegularFile" ];then
+    filemd5Sum=$(md5sum $lineDB)
+  else
+    filemd5Sum="$(find $lineDB -type f -exec md5sum {} \; | md5sum | cut -d ' ' -f 1)  $lineDB"
+  fi
   alreadyThere="false"
   while read lineBackup
   do
@@ -28,15 +38,9 @@ do
   if [ $alreadyThere = "false" ];then
     cat $dbFileLocation/backup.db | grep -v $lineDB > backupTemp
     mv backupTemp $dbFileLocation/backup.db
-    ls $backupDir | grep "$fileName.tar.bz2"
+    ls $backupDir | grep -q "$fileName.tar.bz2"
     if [ $? -eq 0 ];then
       rm "$backupDir$fileName.tar.bz2"
-    fi
-    fType=$(file $lineDB)
-    if [ $(echo $fType | cut -d " " -f 2) = "directory" ];then
-      fileType="Directory"
-    else
-      fileType="RegularFile"
     fi
     echo "$fileType $filemd5Sum  $(date +"%d/%m/%y|%H:%M:%S") $backupPeriod" >> "$dbFileLocation/backup.db"
     tar cf "$backupDir$fileName.tar" -C $(echo $lineDB | rev | cut -d '/' -f 2- | rev) $(echo $lineDB | rev | cut -d '/' -f 1 | rev)
