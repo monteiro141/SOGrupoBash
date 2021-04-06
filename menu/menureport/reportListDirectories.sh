@@ -17,7 +17,7 @@ if [ ${#options[@]} -ne 0 ]
 then
     while $repeat
         do
-        cmd=(dialog --keep-tite --menu "Select options:" 22 76 16)
+        cmd=(dialog --keep-tite --menu "Seleciona:" 22 76 16)
 
         choices=$("${cmd[@]}" "${options[@]}" 2>&1 > /dev/tty)
         case $? in 
