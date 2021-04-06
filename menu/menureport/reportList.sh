@@ -1,11 +1,11 @@
-
 count=0;
 options=();
+fullPath=();
 while read line
 do 
-   lineCut=$(echo "$line" | rev | cut -d '/' -f 1 | rev)
-   echo "$lineCut"
    count=$((count + 1));
+   fullPath[$count]="$line"
+   lineCut=$(echo "$line" | rev | cut -d '/' -f 1 | rev)
    options[$count]=$count" "$lineCut""
 done < databases/database.db
 
@@ -19,8 +19,7 @@ then
 
         choices=$("${cmd[@]}" "${options[@]}" 2>&1 > /dev/tty)
         case $? in 
-            0) #. ./reportShowPath.sh "$(sed "${choices}q;d" databases/database.db)"
-            break;;
+            0) . ./menu/menureport/reportShowPath.sh "${fullPath[$choices]}";;
             1) break;;
         esac
     done
