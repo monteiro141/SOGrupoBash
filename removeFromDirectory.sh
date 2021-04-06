@@ -15,6 +15,8 @@ do
     echo "$backupDir$backupFileName"
     rm -rf "$backupDir$backupFileName.tar.bz2"
     mv backupTemp "$dbFileLocation/backup.db"
+    rm lastBackup
+    touch lastBackup
     break
   fi
 done < "$dbFileLocation/backup.db"
