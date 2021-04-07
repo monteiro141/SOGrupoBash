@@ -7,6 +7,7 @@ do
   fi
 done < "$dbFileLocation/database.db"
 
+touch backupTemp
 while read lineBackup
 do
   if [[ "$(echo $lineBackup | cut -d ' ' -f 3)" = "$1" ]];then
