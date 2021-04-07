@@ -1,5 +1,9 @@
 count=0;
 options=();
+
+count=$((count + 1));
+options[$count]=$count" "RemoveAll""
+
 while read line
 do 
     count=$((count + 1));
@@ -15,8 +19,14 @@ then
         cmd=(dialog --keep-tite --menu "Select options:" 22 76 16)
 
         choices=$("${cmd[@]}" "${options[@]}" 2>&1 > /dev/tty)
+        
         case $? in 
-            0) . ./removeFromDirectory.sh "$(sed "${choices}q;d" databases/database.db)"
+            0)  if [ $choices -ne 1 ];then
+                 choices=$((choices - 1));
+                 . ./removeFromDirectory.sh "$(sed "${choices}q;d" databases/database.db)"
+                else
+                 . ./removeAll.sh
+                fi
             break;;
             1) break;;
         esac
