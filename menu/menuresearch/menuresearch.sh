@@ -16,8 +16,10 @@ do
     case $choice in
     1) . ./menu/menuresearch/ResearchListAll.sh;;
     2) . ./menu/menuresearch/ResearchLastBackup.sh;;
-    3) #. ./menu/menuresearch/ResearchListDirectory.sh;;
-    4) #. ./menu/menuresearch/ResearchDirectoryLastBackup.sh;;
+    3) #. ./menu/menuresearch/ResearchListDirectory.sh
+    ;;
+    4) #. ./menu/menuresearch/ResearchDirectoryLastBackup.sh
+    ;;
     0) break;;
     esac
   ;;
