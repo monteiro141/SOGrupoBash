@@ -14,7 +14,7 @@ do
     case $choice in
     1) . ./menu/menudb/restoreFile.sh;;
     2) . ./menu/menudb/restoreFileNotRealLocation.sh;;
-    3) break;;
+    3) . ./menu/menudb/recreateBackupMenu.sh ;;
     esac
   ;;
   1) break;;
