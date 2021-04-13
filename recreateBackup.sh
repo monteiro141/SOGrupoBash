@@ -1,6 +1,3 @@
-#!/bin/bash
-. ./readConfig.sh
-
 ls $dbFileLocation | grep -q backup.db
 
 if [ $? -eq 1 ];then
