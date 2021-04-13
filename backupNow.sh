@@ -14,6 +14,8 @@ if [ $? -eq 2 ];then
   mkdir $dbFileLocation
 fi
 
+CURRENT_DATE=$(date +"%d/%m/%y|%H:%M:%S")
+
 DIALOG=${DIALOG=dialog}
 let a=$(wc -l "$dbFileLocation/database.db" | cut -d ' ' -f 1)
 COUNT=`expr 100 / $a`
@@ -47,11 +49,11 @@ do
     if [ $? -eq 0 ];then
       rm "$backupDir$fileName.tar.bz2"
     fi
-    echo "$fileType $filemd5Sum  $(date +"%d/%m/%y|%H:%M:%S") $backupPeriod" >> "$dbFileLocation/backup.db"
+    echo "$fileType $filemd5Sum  $CURRENT_DATE $backupPeriod" >> "$dbFileLocation/backup.db"
     
     tar cf "$backupDir$fileName.tar" -C $(echo $lineDB | rev | cut -d '/' -f 2- | rev) $(echo $lineDB | rev | cut -d '/' -f 1 | rev)
     bzip2 "$backupDir$fileName.tar"
-    echo "$(date +"%d/%m/%y|%H:%M:%S")" > lastBackup
+    echo "$CURRENT_DATE" > lastBackup
   fi
   COUNT=`expr $COUNT + 100 / $a`
 done < "$dbFileLocation/database.db"
