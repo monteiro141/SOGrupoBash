@@ -14,8 +14,8 @@ do
   case $opt in 
   0) 
     case $choice in
-    1) ;;
-    2) ;;
+    1) . ./menu/menuresearch/menuResearchListAll.sh;;
+    2) . ./menu/menuresearch/menuResearchLastBackup.sh;;
     3) ;;
     4) ;;
     0) break;;

@@ -2,7 +2,6 @@
 #158K    /mnt/c/Users/monte/OneDrive/Documentos/SistemasOperativos/SOGrupoBash
 #SOGrupoBash ->du -hs /mnt/c/Users/monte/OneDrive/Documentos/SistemasOperativos/SOGrupoBash/crontab.sh
 #4.0K    /mnt/c/Users/monte/OneDrive/Documentos/SistemasOperativos/SOGrupoBash/crontab.sh
-#Lembrar -> espaço medio por ficheiro
 count=0;
 espaco=0;
 media=0;
