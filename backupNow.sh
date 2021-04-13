@@ -43,8 +43,6 @@ do
     fi
   done < "$dbFileLocation/backup.db"
   if [ $alreadyThere = "false" ];then
-    cat $dbFileLocation/backup.db | grep -v $lineDB > backupTemp
-    mv backupTemp $dbFileLocation/backup.db
     ls $backupDir | grep -q "$fileName.tar.bz2"
     if [ $? -eq 0 ];then
       rm "$backupDir$fileName.tar.bz2"
