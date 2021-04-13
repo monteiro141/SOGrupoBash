@@ -1,3 +1,7 @@
 #!/bin/bash
+# ----------------------------------------------------- #
+# BackupCron: Runs crontab to backup data
+# ----------------------------------------------------- #
+
 cd "$(crontab -l | cut -d " " -f 7)"
-./backupNow.sh
+./src/backupNow.sh
