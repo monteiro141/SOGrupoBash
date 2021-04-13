@@ -11,6 +11,7 @@ do
   4 "Pesquisas"\
   5 "Relatórios"\
   6 "Gestão de Base de Dados"\
+  8 "About"\
   9 "Fazer Backup Agora"\
   0 "Sair do Programa" 2> $tempfile
   opt=$?
@@ -24,6 +25,7 @@ do
     4) . ./menu/menuresearch/menuresearch.sh;;
     5) . ./menu/menureport/menureport.sh;;
     6) . ./menu/menudb/menudb.sh;;
+    8) . ./about.sh;;
     9) . ./backupNow.sh;;
     0) break;;
     esac
