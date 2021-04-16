@@ -22,9 +22,14 @@ do
     break
   fi
 done < "$dbFileLocation/database.db"
-#track file if it isn't being tracked yet
-if [ $exists = "false" ];then
-  echo "$1" >> "$dbFileLocation/database.db"
+cat $1 &> /dev/null
+if [ $? -eq 1 ];then
+  dialog --title "Error" --clear --msgbox "That file doesn't exist!" 5 40
 else
-  dialog --title "Error" --clear --msgbox "That file is already being tracked!" 5 40
+  #track file if it isn't being tracked yet
+  if [ $exists = "false" ];then
+    echo "$1" >> "$dbFileLocation/database.db"
+  else
+    dialog --title "Error" --clear --msgbox "That file is already being tracked!" 5 40
+  fi
 fi
