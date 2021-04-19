@@ -26,9 +26,9 @@ do
       case $choice in
         1) . ./src/menu/menuresearch/ResearchListAll.sh;;
         2) . ./src/menu/menuresearch/ResearchLastBackup.sh;;
-        3) #. ./src/menu/menuresearch/ResearchListDirectory.sh
+        3) . ./src/menu/menuresearch/ResearchListDirectory.sh
         ;;
-        4) #. ./src/menu/menuresearch/ResearchDirectoryLastBackup.sh
+        4) . ./src/menu/menuresearch/ResearchDirectoryLastBackup.sh
         ;;
         0) break;;
       esac;;

@@ -10,11 +10,13 @@ dateLastBackUp="$(cat lastBackup)";
 #get all backup files
 while read line
 do 
-  if [ "$(echo "$line" | cut -d ' ' -f 6)" = "$dateLastBackUp" ]; then
-    count=$((count + 1));
-    fullPath[$count]="$(echo "$line" | cut -d ' ' -f 4)"
-    lineCut=$(echo "$line" | cut -d ' ' -f 4 | rev | cut -d '/' -f 1 | rev)
-    options[$count]=$count" "$lineCut""
+  if [ $(echo "$line" | cut -d ' ' -f 1) = "RegularFile" ]; then
+    if [ "$(echo "$line" | cut -d ' ' -f 6)" = "$dateLastBackUp" ]; then
+      count=$((count + 1));
+      fullPath[$count]="$(echo "$line" | cut -d ' ' -f 4)"
+      lineCut=$(echo "$line" | cut -d ' ' -f 4 | rev | cut -d '/' -f 1 | rev)
+      options[$count]=$count" "$lineCut""
+    fi
   fi
 done < databases/backup.db
 options=(${options[@]})
