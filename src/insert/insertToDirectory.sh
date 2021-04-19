@@ -22,8 +22,8 @@ do
     break
   fi
 done < "$dbFileLocation/database.db"
-cat $1 &> /dev/null
-if [ $? -eq 1 ];then
+ls $1 &> /dev/null
+if [ $? -eq 2 ];then
   dialog --title "Error" --clear --msgbox "That file doesn't exist!" 5 40
 else
   #track file if it isn't being tracked yet
