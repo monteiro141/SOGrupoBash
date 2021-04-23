@@ -29,7 +29,7 @@ do
 
         if [[ $dayOftheMonthChoice == "*" ]] || ([[ $dayOftheMonthChoice -ge 1 ]] && [[ $dayOftheMonthChoice -le 31 ]])
         then
-            dialog  --title 'Seleção da hora' --inputbox 'Hora: (0 a 23); (* Todos a hora)' 0 0 2> opcoes.txt
+            dialog  --title 'Seleção da hora' --inputbox 'Hora: (0 a 23); (* Toda a hora)' 0 0 2> opcoes.txt
             hourChoice=$(cat opcoes.txt)
             echo "" > opcoes.txt
 
