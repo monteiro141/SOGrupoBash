@@ -7,4 +7,4 @@
 . ./src/readConfig.sh
 
 cd "$(crontab -l | cut -d " " -f 7)"
-./src/backupNow.sh
+. ./src/backupNow.sh
