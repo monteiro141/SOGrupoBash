@@ -72,9 +72,9 @@ do
     #tar and zip the file
     tar cf "$backupDir$fileName.tar" -C $(echo $lineDB | rev | cut -d '/' -f 2- | rev) $(echo $lineDB | rev | cut -d '/' -f 1 | rev)
     bzip2 "$backupDir$fileName.tar"
+    #register the date of the backup
+    echo "$CURRENT_DATE" > lastBackup
   fi
   COUNT=`expr $COUNT + 100 / $loadingBarInc`
 done < "$dbFileLocation/database.db"
 ) | $DIALOG --title "Backing up your files" --gauge "" 20 70 0
-#register the date of the backup
-echo "$CURRENT_DATE" > lastBackup
